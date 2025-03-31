@@ -36,36 +36,47 @@ password: postgres
 ### 3. クエリの実行
 
 ```bash
-\i queries/get_by_curry_roux.sql
-\i queries/get_by_miso.sql
-\i queries/get_final_recipe_by_curry_roux.sql
+\i queries/get_department_hierarchy.sql (部署の階層を再帰的に取得するクエリ)
+\i queries/get_by_miso.sql (味噌が使われたレシピを再帰的に取得するクエリ)
+\i queries/get_by_curry_roux.sql (カレールーが使われたレシピを再帰的に取得するクエリ)
+\i queries/get_final_recipe_by_curry_roux.sql (カレールーが使われた最終的なレシピを再帰的に取得するクエリ)
 ```
 
 ## テーブル構造
 
-### ingredients(材料)
+### 組織関連テーブル
+
+#### departments(部署)
+
+- id
+- name
+- parent_id
+
+### レシピ関連テーブル
+
+#### ingredients(材料)
 
 - id
 - name
 
-### recipes(レシピ)
+#### recipes(レシピ)
 
 - id
 - name
 
-### ingredient_purchases(材料購入)
+#### ingredient_purchases(材料購入)
 
 - id
 - ingredient_id
 - purchase_date
 
-### ingredient_to_recipe(材料からレシピの記録)
+#### ingredient_to_recipe(材料からレシピの記録)
 
 - id
 - ingredient_id
 - recipe_id
 
-### recipe_to_ingredinet(レシピから材料の記録)
+#### recipe_to_ingredinet(レシピから材料の記録)
 
 - id
 - recipe_id

@@ -1,3 +1,4 @@
+-- ── 材料の例 ────────────────────────────────────────────────────────
 -- 材料テーブル
 CREATE TABLE ingredients (id SERIAL PRIMARY KEY, name TEXT NOT NULL);
 
@@ -28,4 +29,13 @@ CREATE TABLE recipe_to_ingredient (
     ingredient_id INT NOT NULL,
     CONSTRAINT fk_recipe FOREIGN KEY (recipe_id) REFERENCES recipes (id) ON DELETE CASCADE,
     CONSTRAINT fk_ingredient FOREIGN KEY (ingredient_id) REFERENCES ingredients (id) ON DELETE CASCADE
+);
+
+-- ── 組織の例 ────────────────────────────────────────────────────────
+-- 組織テーブル
+CREATE TABLE departments (
+    id SERIAL PRIMARY KEY,
+    name TEXT NOT NULL,
+    parent_id INT,
+    CONSTRAINT fk_parent_id FOREIGN KEY (parent_id) REFERENCES departments (id) ON DELETE CASCADE
 );
