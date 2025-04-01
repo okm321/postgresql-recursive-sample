@@ -20,13 +20,19 @@ WITH RECURSIVE
         FROM
             departments d
             JOIN department_hierarchy dh ON d.parent_id = dh.id
-    ) CYCLE id
+    )
+    -- 探索順序を記録
+    SEARCH DEPTH FIRST BY id
 SET
-    is_cycle USING id_path -- 循環参照を検出
+    ordercol
+    -- 循環参照を検出
+    CYCLE id
+SET
+    is_cycle USING id_path
     -- 結果出力
 SELECT
     *
 FROM
     department_hierarchy
 ORDER BY
-    id_path;
+    ordercol;
