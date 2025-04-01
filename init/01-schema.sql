@@ -13,8 +13,8 @@ CREATE TABLE ingredient_purchases (
     CONSTRAINT fk_ingredient FOREIGN KEY (ingredient_id) REFERENCES ingredients (id) ON DELETE CASCADE
 );
 
--- 材料からレシピの関連テーブル
-CREATE TABLE ingredient_to_recipe (
+-- 材料からレシピの履歴テーブル
+CREATE TABLE ingredient_to_recipe_logs (
     id SERIAL PRIMARY KEY,
     ingredient_id INT NOT NULL,
     recipe_id INT NOT NULL,
@@ -22,8 +22,8 @@ CREATE TABLE ingredient_to_recipe (
     CONSTRAINT fk_recipe FOREIGN KEY (recipe_id) REFERENCES recipes (id) ON DELETE CASCADE
 );
 
--- レシピから材料の関連テーブル
-CREATE TABLE recipe_to_ingredient (
+-- レシピから材料の履歴テーブル
+CREATE TABLE recipe_to_ingredient_logs (
     id SERIAL PRIMARY KEY,
     recipe_id INT NOT NULL,
     ingredient_id INT NOT NULL,

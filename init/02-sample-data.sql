@@ -31,7 +31,7 @@ VALUES
 
 -- 材料からレシピ
 INSERT INTO
-    ingredient_to_recipe (id, ingredient_id, recipe_id)
+    ingredient_to_recipe_logs (id, ingredient_id, recipe_id)
 VALUES
     (1, 1, 1),
     (2, 101, 101),
@@ -42,7 +42,7 @@ VALUES
 
 -- レシピから材料
 INSERT INTO
-    recipe_to_ingredient (id, recipe_id, ingredient_id)
+    recipe_to_ingredient_logs (id, recipe_id, ingredient_id)
 VALUES
     (1, 101, 102),
     (2, 102, 103),
